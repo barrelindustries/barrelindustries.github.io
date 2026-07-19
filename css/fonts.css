@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("../assets/fonts/inter-400-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/chakra-petch-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/chakra-petch-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Oxanium";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/oxanium-500.woff2") format("woff2");
+}
