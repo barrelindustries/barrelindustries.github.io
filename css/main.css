@@ -49,8 +49,9 @@ body {
 }
 
 .brand-mark {
-  width: 30px;
-  height: 30px;
+  width: 180px;
+  height: auto;
+  filter: invert(1);
 }
 
 .nav-links {
