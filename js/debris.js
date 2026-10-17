@@ -1,7 +1,7 @@
 (function () {
   const canvas = document.querySelector(".debris");
   if (!canvas) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const ctx = canvas.getContext("2d");
   if (!ctx || !("IntersectionObserver" in window)) return;
@@ -11,6 +11,9 @@
   let particles = [];
   let raf = null;
   let running = false;
+  let paused = false;
+  let visible = false;
+  const motionToggle = document.querySelector(".motion-toggle");
 
   function rand(min, max) {
     return Math.random() * (max - min) + min;
@@ -57,7 +60,7 @@
     ctx.translate(p.x, p.y);
     ctx.rotate(p.rot);
     ctx.globalAlpha = p.alpha;
-    ctx.strokeStyle = p.ember ? "#f06d48" : "#d63a2e";
+    ctx.strokeStyle = p.ember ? "#c98185" : "#b34b50";
     ctx.lineWidth = 1.25;
     ctx.beginPath();
     const s = p.s;
@@ -106,7 +109,7 @@
   }
 
   function start() {
-    if (running) return;
+    if (running || paused || reducedMotion.matches || document.hidden || !visible) return;
     running = true;
     tick();
   }
@@ -118,14 +121,37 @@
   }
 
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => (entry.isIntersecting ? start() : stop()));
+    entries.forEach((entry) => {
+      visible = entry.isIntersecting;
+      visible ? start() : stop();
+    });
   });
   io.observe(canvas);
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) stop();
-    else if (canvas.getBoundingClientRect().bottom > 0 && canvas.getBoundingClientRect().top < window.innerHeight) start();
+    else start();
   });
+
+  const syncMotionPreference = () => {
+    if (motionToggle) motionToggle.hidden = reducedMotion.matches;
+    if (reducedMotion.matches) {
+      stop();
+      const { w, h } = dims();
+      ctx.clearRect(0, 0, w, h);
+    } else {
+      start();
+    }
+  };
+
+  if (motionToggle) {
+    motionToggle.addEventListener("click", () => {
+      paused = !paused;
+      motionToggle.textContent = paused ? "Play animation" : "Pause animation";
+      paused ? stop() : start();
+    });
+  }
+  reducedMotion.addEventListener("change", syncMotionPreference);
 
   let resizeTimer = null;
   window.addEventListener("resize", () => {
@@ -138,5 +164,5 @@
 
   resize();
   spawn();
-  start();
+  syncMotionPreference();
 })();

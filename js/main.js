@@ -13,6 +13,9 @@
   const menu = nav.querySelector("#nav-links");
   if (!toggle || !menu) return;
 
+  nav.classList.add("nav--enhanced");
+  toggle.hidden = false;
+
   const mobile = window.matchMedia("(max-width: 720px)");
 
   const syncInert = () => {
@@ -44,9 +47,12 @@
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMenu();
+    if (e.key === "Escape" && nav.classList.contains("nav--open")) {
+      closeMenu();
+      toggle.focus();
+    }
   });
 
-  mobile.addEventListener("change", syncInert);
+  mobile.addEventListener("change", closeMenu);
   syncInert();
 })();

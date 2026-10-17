@@ -29,3 +29,12 @@
   font-display: swap;
   src: url("../assets/fonts/oxanium-500.woff2") format("woff2");
 }
+
+/* UnifrakturCook: SIL OFL 1.1; see assets/fonts/unifrakturcook-OFL.txt. */
+@font-face {
+  font-family: "UnifrakturCook";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/unifrakturcook-700.ttf") format("truetype");
+}
