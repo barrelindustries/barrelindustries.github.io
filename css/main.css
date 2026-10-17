@@ -160,15 +160,6 @@ a:focus-visible, button:focus-visible {
   text-transform: uppercase;
 }
 
-.hero .eyebrow {
-  margin-bottom: 2rem;
-}
-
-.eyebrow span {
-  padding: 0 .5rem;
-  color: var(--text-muted);
-}
-
 h1, h2, .report-example h3 {
   font-family: var(--font-editorial);
   font-weight: 400;
@@ -231,15 +222,6 @@ em {
   height: auto;
 }
 
-.hero-seal span {
-  display: block;
-  margin-top: 1.5rem;
-  color: var(--text-muted);
-  font-size: .6rem;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-}
-
 .hero-bottom {
   position: absolute;
   bottom: 2rem;
@@ -290,11 +272,6 @@ h2 {
   letter-spacing: 0;
   line-height: 1.15;
   margin: 1.5rem 0;
-}
-
-h2 em {
-  font-style: normal;
-  font-weight: 700;
 }
 
 .section-intro > p:last-child, .about-content p {
@@ -437,11 +414,6 @@ h3 {
   height: auto;
 }
 
-.footer p {
-  color: var(--text-muted);
-  font-size: .75rem;
-}
-
 .footer .text-link {
   font-size: .7rem;
 }
@@ -506,11 +478,6 @@ h3 {
   h1 {
     font-size: clamp(2.6rem, 8vw, 4rem);
   }
-  .hero .eyebrow {
-    max-width: 260px;
-    font-size: .6rem;
-    line-height: 1.8;
-  }
   .hero-seal {
     display: none;
   }
@@ -555,10 +522,6 @@ h3 {
   .footer {
     flex-wrap: wrap;
     gap: 1.25rem;
-  }
-  .footer p {
-    flex-basis: 100%;
-    order: 1;
   }
 }
 
